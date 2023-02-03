@@ -26,13 +26,9 @@ document.querySelector('.check').addEventListener('click', function () {
         highScore = score;
         document.querySelector('.highscore').textContent = highScore;
       }
-    } else if (guess > answer) {
-      document.querySelector('.message').textContent = '⬆️ Too High !';
-      score--;
-
-      document.querySelector('.score').textContent = score;
-    } else if (guess < answer) {
-      document.querySelector('.message').textContent = '⬇️ Too Low !';
+    } else if (guess !== answer) {
+      document.querySelector('.message').textContent =
+        guess > answer ? '⬆️ Too High !' : '⬇️ Too Low !';
       score--;
 
       document.querySelector('.score').textContent = score;
@@ -46,11 +42,18 @@ document.querySelector('.check').addEventListener('click', function () {
 
 document.querySelector('.again').addEventListener('click', function () {
   answer = Math.trunc(Math.random() * 20) + 1;
+
   score = 20;
+
   document.querySelector('.score').textContent = score;
+
   document.querySelector('.number').textContent = '?';
+
   document.querySelector('.message').textContent = 'Start guessing...';
+
   document.querySelector('.number').style.width = '15rem';
+
   document.querySelector('body').style.backgroundColor = '#222';
+
   document.querySelector('.guess').value = '';
 });
