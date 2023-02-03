@@ -5,9 +5,11 @@ let answer = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 // console.log(number);
 
+let highScore = 0;
+
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess);
+  //   console.log(guess);
   if (score > 1) {
     if (!guess) {
       document.querySelector('.message').textContent = '⛔ No Number !';
@@ -19,6 +21,11 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.number').textContent = answer;
 
       document.querySelector('.message').textContent = '👍 Correct Number !';
+
+      if (score > highScore) {
+        highScore = score;
+        document.querySelector('.highscore').textContent = highScore;
+      }
     } else if (guess > answer) {
       document.querySelector('.message').textContent = '⬆️ Too High !';
       score--;
